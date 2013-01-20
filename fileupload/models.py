@@ -9,7 +9,7 @@ class Picture(models.Model):
     creator = models.ForeignKey(User)
 
     def __unicode__(self):
-        return self.file
+        return self.file.name
 
     @models.permalink
     def get_absolute_url(self):
