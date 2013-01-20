@@ -16,7 +16,25 @@ $(function () {
     'use strict';
 
     // Initialize the jQuery File Upload widget:
-    $('#fileupload').fileupload();
+//    $('#fileupload').fileupload();
+    $('#fileupload').fileupload(
+        'option',
+        {
+//            url: '/path/to/upload/handler.json',
+//            sequentialUploads: true
+            autoUpload: true,
+            // this formData is neccessary to pass the csrf and pass uid to django
+            formData: [
+                { name: "csrfmiddlewaretoken", value: "{{ csrf_token }}"}
+            ]
+        }
+    );
+
+    $('#fileupload').fileupload({
+        add: function (e, data) {
+            data.submit();
+        }
+    });
 
     // Enable iframe cross-domain access via redirect option:
     $('#fileupload').fileupload(
