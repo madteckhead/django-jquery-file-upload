@@ -1,8 +1,8 @@
 from django.views.generic import CreateView, DeleteView
 from django.views.generic.base import View
 
+import simplejson
 from django.http import HttpResponse, Http404
-from django.utils import simplejson
 from django.core.urlresolvers import reverse
 from django.conf import settings
 
